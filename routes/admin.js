@@ -4,10 +4,20 @@ const asyncHandler = require("express-async-handler");
 const bcrypt = require("bcrypt");
 const Admin = require("../models/Admin");
 const Album = require("../models/Album");
+const multer = require('multer');
 const Post = require("../models/Post");
 const adminLayout = "../views/layouts/admin";
-
-
+const path = require('path');
+// Multer 설정
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'public/img/');
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + path.extname(file.originalname));
+  }
+});
+const upload = multer({ storage: storage });
 // 로그인 확인 미들웨어
 const checkLogin = (req, res, next) => {
   if (!req.session.userId) {
@@ -97,6 +107,7 @@ router.get(
 router.get(
   "/add",
   checkLogin,
+
   asyncHandler(async (req, res) => {
     const locals = { title: "게시물 작성" };
     res.render("admin/add", { locals, layout: adminLayout });
@@ -205,11 +216,13 @@ router.get(
 router.post(
   "/admin/products/add",
   checkLogin,
+  upload.single('coverImage'),
   asyncHandler(async (req, res) => {
     try {
       const { title, artist, genre, description } = req.body;
-      const newAlbum = new Album({ title, artist, genre, description });
-      await Album.create(newAlbum);
+      const coverImage = req.file ? req.file.filename : null;
+      const newAlbum = new Album({ title, artist, genre, description ,coverImage});
+      await newAlbum.save();
       res.redirect("/admin/products");
     } catch (error) {
       console.error(error);
@@ -233,10 +246,12 @@ router.get(
 router.post(
   "/admin/products/edit/:id",
   checkLogin,
+  upload.single('coverImage'),
   asyncHandler(async (req, res) => {
     try {
       const { title, artist, genre, description } = req.body;
-      await Album.findByIdAndUpdate(req.params.id, { title, artist,  genre, description });
+      const coverImage = req.file ? req.file.filename : null;
+      await Album.findByIdAndUpdate(req.params.id, { title, artist,  genre, description,coverImage });
       res.redirect("/admin/products");
     } catch (error) {
       console.error(error);

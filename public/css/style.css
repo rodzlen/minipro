@@ -1,0 +1,240 @@
+/* Reset CSS */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Global Styles */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f8f8f8;
+  color: #333;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-bottom: 60px; /* Footer 높이만큼 여백 추가 */
+}
+
+/* Header Styles */
+.header {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
+}
+
+.header a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.header-logo {
+  font-size: 32px; /* 로고 크기 키우기 */
+  font-weight: bold;
+}
+
+.header-nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.header-nav ul li {
+  display: inline;
+  margin-right: 20px;
+}
+
+.header-nav ul li a {
+  font-size: 18px;
+  transition: color 0.3s ease; /* 링크에 호버 효과 추가 */
+}
+
+.header-nav ul li a:hover {
+  color: #ffc107; /* 호버 시 색상 변경 */
+}
+
+.header-button {
+  margin-top: 10px;
+}
+
+.header-button a {
+  margin-right: 10px;
+  font-weight: bold;
+  padding: 8px 16px;
+  border: 2px solid #fff;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.header-button a:hover {
+  background-color: #fff;
+  color: #333;
+}
+
+/* Main Styles */
+.main {
+  padding: 20px;
+  margin-bottom: 80px; /* 푸터의 높이(20px + 20px + 40px)만큼 여백 추가 */
+}
+
+/* Footer Styles */
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  position: fixed; /* relative -> fixed 변경 */
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+
+footer div {
+  margin-bottom: 10px;
+}
+
+/* Album Table Styles */
+.album-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.album-table th, .album-table td {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.album-table th {
+  background-color: #333;
+  color: #fff;
+}
+
+.album-table td img {
+  max-width: 100px;
+  height: auto;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 20px;
+  }
+
+  .header-nav ul li {
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .header-button a {
+    display: block;
+    margin-top: 10px;
+  }
+}
+
+/* Album Form Styles */
+.album-title {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+.album-form {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f2f2f2;
+  border-radius: 5px;
+  margin-bottom: 100px; /* 푸터의 높이만큼 여백 추가 */
+}
+
+.album-input, .album-file {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.album-file {
+  margin-bottom: 20px;
+}
+
+.album-button {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.album-button:hover {
+  background-color: #555;
+}
+
+/* Admin Page Styles */
+.admin-title {
+  margin-bottom: 20px;
+}
+
+.admin-title h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.admin-title .button {
+  text-decoration: none;
+  background-color: #007bff;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 4px;
+}
+
+.admin-posts {
+  list-style: none;
+  padding: 0;
+}
+
+.admin-posts li {
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+}
+
+.admin-posts li a {
+  text-decoration: none;
+  color: #333;
+}
+
+.admin-post-controls {
+  margin-top: 10px;
+}
+
+.admin-post-controls .btn {
+  text-decoration: none;
+  background-color: #28a745;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+.admin-post-controls .btn-delete {
+  background-color: #dc3545;
+}
+
+.admin-post-controls .btn:hover,
+.admin-post-controls .btn-delete:hover {
+  opacity: 0.8;
+}
+

@@ -1,20 +1,8 @@
-<h1>음반 추가</h1>
-<form action="/admin/products/add" method="POST">
-  <div>
-    <label for="title">제목</label>
-    <input type="text" id="title" name="title" required>
-  </div>
-  <div>
-    <label for="artist">아티스트</label>
-    <input type="text" id="artist" name="artist" required>
-  </div>
-  <div>
-    <label for="genre">장르</label>
-    <input type="text" id="genre" name="genre" required>
-  </div>
-  <div>
-    <label for="description">설명</label>
-    <textarea id="description" name="description" required></textarea>
-  </div>
-  <button type="submit">추가</button><a href="/admin/products">뒤로가기</a>
+<h1 class="album-title">앨범 추가</h1>
+<form action="/admin/products/add" method="POST" enctype="multipart/form-data" class="album-form">
+  <input type="text" name="title" placeholder="제목" required class="album-input">
+  <input type="text" name="artist" placeholder="아티스트" required class="album-input">
+  <input type="text" name="genre" placeholder="장르" required class="album-input">
+  <input type="file" name="coverImage" required class="album-file">
+  <button type="submit" class="album-button">추가</button>
 </form>

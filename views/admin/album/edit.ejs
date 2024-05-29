@@ -17,5 +17,9 @@
     <label for="description">설명</label>
     <textarea id="description" name="description" required><%= album.description %></textarea>
   </div>
+  <div>
+    <label for="coverImage">이미지</label>
+    <input type="file" name="coverImage">
+  </div>
   <button type="submit">수정</button><a href="/admin/products">뒤로가기</a>
 </form>

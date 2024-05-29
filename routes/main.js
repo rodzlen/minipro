@@ -107,7 +107,8 @@ router.get("/post/:id", asyncHandler(async (req, res) => {
 router.get("/products", asyncHandler(async (req, res) => {
   const locals = { title: "음반 검색" , isLoggedIn: !!req.cookies.token};
   const searchQuery = req.query.search || "";
-  const albums = await Album.find({ title: { $regex: searchQuery, $options: "i" } }); // 대소문자 구분 없이 검색
+  const albums = await Album.find({ title: { $regex: searchQuery, $options: "i" },
+ }); // 대소문자 구분 없이 검색
   res.render("product", { locals, albums, layout: mainLayout });
 }));
 

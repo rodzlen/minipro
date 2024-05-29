@@ -13,6 +13,8 @@ const albumSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  coverImage: String, 
+  
   createdAt: {
     type: Date,
     default: Date.now,

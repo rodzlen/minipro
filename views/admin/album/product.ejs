@@ -1,13 +1,15 @@
 <h1>음반 목록</h1>
 <a href="/admin/products/add">음반 추가</a>
-<table>
+<table class="album-table">
   <thead>
     <tr>
       <th>제목</th>
       <th>아티스트</th>
       <th>장르</th>
-
-
+      <th>설명</th>
+      <th>이미지</th>
+      <th>수정</th>
+      <th>삭제</th>
     </tr>
   </thead>
   <tbody>
@@ -17,6 +19,11 @@
       <td><%= album.artist %></td>
       <td><%= album.genre %></td>
       <td><%= album.description %></td>
+      <td>
+        <% if (album.coverImage) { %>
+          <img src="/uploads/<%= album.coverImage %>" alt="<%= album.title %>" class="album-image">
+        <% } %>
+      </td>
       <td><a href="/admin/products/edit/<%= album._id %>">수정</a></td>
       <td>
         <form action="/admin/products/delete/<%= album._id %>" method="POST" onsubmit="return confirm('정말 삭제하시겠습니까?');">
