@@ -1,0 +1,29 @@
+<h1>음반 목록</h1>
+<a href="/admin/products/add">음반 추가</a>
+<table>
+  <thead>
+    <tr>
+      <th>제목</th>
+      <th>아티스트</th>
+      <th>장르</th>
+
+
+    </tr>
+  </thead>
+  <tbody>
+    <% albums.forEach(album => { %>
+    <tr>
+      <td><%= album.title %></td>
+      <td><%= album.artist %></td>
+      <td><%= album.genre %></td>
+      <td><%= album.description %></td>
+      <td><a href="/admin/products/edit/<%= album._id %>">수정</a></td>
+      <td>
+        <form action="/admin/products/delete/<%= album._id %>" method="POST" onsubmit="return confirm('정말 삭제하시겠습니까?');">
+          <button type="submit">삭제</button>
+        </form>
+      </td>
+    </tr>
+    <% }) %>
+  </tbody>
+</table>

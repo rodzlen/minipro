@@ -9,14 +9,13 @@ required: true,
 },
 // 게시물 내용
 body:{
-  type: String,
-  required: true
+  type: String
   },
   // 게시물 작성일
   createdAt: {
   type: Date,
   default: Date.now(),
-  },
+  }
   });
   module.exports = mongoose.model("Post",
   PostSchema);

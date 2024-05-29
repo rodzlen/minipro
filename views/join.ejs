@@ -1,5 +1,5 @@
 <h3>회원가입</h3>
-<form action="/register" method="POST">
+<form action="/join" method="POST">
 <label for="username"><b>사용자 이름</b></label>
 <input type="text" placeholder="Enter Username"
 name="username">
@@ -8,30 +8,3 @@ name="username">
 name="password">
 <input type="submit" value="등록" class="btn">
 </form>
-<script>
-  document.getElementById('joinForm').addEventListener('submit', async function(event) {
-    event.preventDefault();
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
-
-    try {
-      const response = await fetch('/join', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ username, password })
-      });
-
-      if (!response.ok) {
-        const errorData = await response.json();
-        alert(errorData.message);
-      } else {
-        alert('회원가입이 완료되었습니다.');
-        window.location.href = '/login';
-      }
-    } catch (error) {
-      alert('회원가입 요청 중 오류가 발생했습니다.');
-    }
-  });
-</script>

@@ -1,0 +1,16 @@
+
+<h1>음반 목록</h1>
+<form action="/products" method="GET">
+  <input type="text" name="search" placeholder="검색">
+  <button type="submit">검색</button>
+</form>
+<ul>
+  <% albums.forEach(album => { %>
+    <div>
+      <strong>제목: <%= album.title %></strong><br>
+      아티스트: <%= album.artist %><br>
+      장르: <%= album.genre %><br>
+      설명: <%= album.description %><br>
+    </div>
+  <% }) %>
+</ul>

@@ -3,8 +3,10 @@ const router = express.Router();
 const asyncHandler = require("express-async-handler");
 const bcrypt = require("bcrypt");
 const Admin = require("../models/Admin");
+const Album = require("../models/Album");
 const Post = require("../models/Post");
 const adminLayout = "../views/layouts/admin";
+
 
 // 로그인 확인 미들웨어
 const checkLogin = (req, res, next) => {
@@ -85,7 +87,7 @@ router.get(
   "/allPosts",
   checkLogin,
   asyncHandler(async (req, res) => {
-    const locals = { title: "Posts", isLoggedIn: !!req.session.userId, username: req.session.username };
+    const locals = { title: "공지", isLoggedIn: !!req.session.userId, username: req.session.username };
     const data = await Post.find();
     res.render("admin/allPosts", { locals, data, layout: adminLayout });
   })
@@ -107,6 +109,10 @@ router.post(
   checkLogin,
   asyncHandler(async (req, res) => {
     const { title, body } = req.body;
+    if(!title){
+      return res.status(400).send('<script>alert("제목을 입력해 주세요.");</script>');
+        
+    } 
     const newPost = new Post({ title, body, createdBy: req.session.userId });
     await Post.create(newPost);
     res.redirect("/allPosts");
@@ -130,9 +136,6 @@ router.put(
   checkLogin,
   asyncHandler(async (req, res) => {
     const post = await Post.findById(req.params.id);
-    if (post.createdBy.toString() !== req.session.userId) {
-      return res.status(401).send('<script>alert("권한이 없습니다."); window.location.href="/allPosts";</script>');
-    }
     await Post.findByIdAndUpdate(req.params.id, {
       title: req.body.title,
       body: req.body.body,
@@ -148,9 +151,6 @@ router.delete(
   checkLogin,
   asyncHandler(async (req, res) => {
     const post = await Post.findById(req.params.id);
-    if (post.createdBy.toString() !== req.session.userId) {
-      return res.status(401).send('<script>alert("권한이 없습니다."); window.location.href="/allPosts";</script>');
-    }
     await Post.deleteOne({ _id: req.params.id });
     res.redirect("/allPosts");
   })
@@ -158,14 +158,14 @@ router.delete(
 
 // 게시물 조회
 router.get(
-  "/post/:id",
+  "/admin/post/:id",
   checkLogin,
   asyncHandler(async (req, res) => {
     const post = await Post.findById(req.params.id);
     if (!post) {
       return res.status(404).json({ message: "게시물을 찾을 수 없습니다." });
     }
-    res.render("post", { data: post, layout: adminLayout });
+    res.render("admin/post", { data: post, layout: adminLayout });
   })
 );
 
@@ -178,5 +178,86 @@ router.get("/adminlogout", (req, res) => {
     res.redirect("/adminlogin");
   });
 });
+
+// 모든 음반 조회
+router.get(
+  "/admin/products",
+  checkLogin,
+  asyncHandler(async (req, res) => {
+    const locals = { title: "음반 목록" };
+    const albums = await Album.find();
+    res.render("admin/album/product", { locals, albums, layout: adminLayout });
+    
+  })
+);
+
+// 음반 추가 페이지
+router.get(
+  "/admin/products/add",
+  checkLogin,
+  asyncHandler(async (req, res) => {
+    const locals = { title: "음반 추가" };
+    res.render("admin/album/add", { locals, layout: adminLayout });
+  })
+);
+
+// 음반 추가 처리
+router.post(
+  "/admin/products/add",
+  checkLogin,
+  asyncHandler(async (req, res) => {
+    try {
+      const { title, artist, genre, description } = req.body;
+      const newAlbum = new Album({ title, artist, genre, description });
+      await Album.create(newAlbum);
+      res.redirect("/admin/products");
+    } catch (error) {
+      console.error(error);
+      res.status(500).send('<script>alert("음반 추가 중 오류가 발생했습니다."); window.location.href="/admin/products/add";</script>');
+    }
+  })
+);
+
+// 음반 수정 페이지
+router.get(
+  "/admin/products/edit/:id",
+  checkLogin,
+  asyncHandler(async (req, res) => {
+    const locals = { title: "음반 수정" };
+    const album = await Album.findById(req.params.id);
+    res.render("admin/album/edit", { locals, album, layout: adminLayout });
+  })
+);
+
+// 음반 수정 처리
+router.post(
+  "/admin/products/edit/:id",
+  checkLogin,
+  asyncHandler(async (req, res) => {
+    try {
+      const { title, artist, genre, description } = req.body;
+      await Album.findByIdAndUpdate(req.params.id, { title, artist,  genre, description });
+      res.redirect("/admin/products");
+    } catch (error) {
+      console.error(error);
+      res.status(500).send('<script>alert("음반 수정 중 오류가 발생했습니다."); window.location.href="/admin/products";</script>');
+    }
+  })
+);
+
+// 음반 삭제
+router.post(
+  "/admin/products/delete/:id",
+  checkLogin,
+  asyncHandler(async (req, res) => {
+    try {
+      await Album.findByIdAndDelete(req.params.id);
+      res.redirect("/admin/products");
+    } catch (error) {
+      console.error(error);
+      res.status(500).send('<script>alert("음반 삭제 중 오류가 발생했습니다."); window.location.href="/admin/products";</script>');
+    }
+  })
+);
 
 module.exports = router;

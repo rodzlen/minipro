@@ -6,6 +6,7 @@ const asyncHandler = require("express-async-handler");
 const User = require("../models/User");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const Album = require("../models/Album");
 const jwtSecret = process.env.JWT_SECRET;
 
 // 로그인 확인 미들웨어
@@ -75,11 +76,39 @@ router.get("/join", asyncHandler(async (req, res) => {
   const locals = { title: "회원가입", isLoggedIn: !!req.cookies.token };
   res.render("join", { locals, layout: mainLayout });
 }));
+router.post(
+  "/join",
+  asyncHandler(async (req, res) => {
+    try {
+      const { username, password } = req.body;
+      if (!username || !password) {
+        return res.status(400).send('<script>alert("제대로 입력하세요."); window.location.href="/join";</script>');
+      }
+      const hashedPassword = await bcrypt.hash(password, 10);
+      const user = await User.create({
+        username,
+        password: hashedPassword,
+      });
+      res.status(500).send('<script>alert("회원가입이 완료되었습니다."); window.location.href="/join";</script>');
+    } catch (error) {
+      console.error(error);
+      res.status(500).send('<script>alert("회원가입 중 오류가 발생"); window.location.href="/join";</script>');
+    }
+  })
+);
 
 // 게시물 상세 보기
-router.get("/home/:id", asyncHandler(async (req, res) => {
+router.get("/post/:id", asyncHandler(async (req, res) => {
+  const locals = { isLoggedIn: !!req.cookies.token};
   const data = await Post.findOne({ _id: req.params.id });
-  res.render("post", { data, layout: mainLayout });
+  res.render("post", { locals, data, layout: mainLayout });
+}));
+// 음반 검색 페이지
+router.get("/products", asyncHandler(async (req, res) => {
+  const locals = { title: "음반 검색" , isLoggedIn: !!req.cookies.token};
+  const searchQuery = req.query.search || "";
+  const albums = await Album.find({ title: { $regex: searchQuery, $options: "i" } }); // 대소문자 구분 없이 검색
+  res.render("product", { locals, albums, layout: mainLayout });
 }));
 
 module.exports = router;

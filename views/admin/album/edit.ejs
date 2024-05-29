@@ -1,0 +1,21 @@
+<h1>음반 수정</h1>
+<form action="/admin/products/edit/<%= album._id %>" method="POST">
+  <div>
+    <label for="title">제목</label>
+    <input type="text" id="title" name="title" value="<%= album.title %>" required>
+  </div>
+  <div>
+    <label for="artist">아티스트</label>
+    <input type="text" id="artist" name="artist" value="<%= album.artist %>" required>
+  </div>
+  
+  <div>
+    <label for="genre">장르</label>
+    <input type="text" id="genre" name="genre" value="<%= album.genre %>" required>
+  </div>
+  <div>
+    <label for="description">설명</label>
+    <textarea id="description" name="description" required><%= album.description %></textarea>
+  </div>
+  <button type="submit">수정</button><a href="/admin/products">뒤로가기</a>
+</form>

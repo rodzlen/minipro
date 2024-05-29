@@ -4,6 +4,8 @@ const expressLayouts = require("express-ejs-layouts");
 const MongoStore = require("connect-mongo");
 const app = express();
 const connectDb = require("./config/db");
+const mainRoutes = require('./routes/main');
+const adminRoutes = require('./routes/admin');
 const cookieParser = require("cookie-parser");
 const methodOverride = require("method-override");
 require("dotenv").config();
@@ -37,8 +39,9 @@ app.set("views", "./views");
 app.set('layout', './layouts/main');
 app.set('layout extractScripts', true);
 
-app.use("/", require("./routes/main"));
-app.use("/", require("./routes/admin"));
+app.use('/', mainRoutes);
+app.use('/', adminRoutes);
+
 
 app.listen(port, () => {
   console.log(`서버가 ${port}에서 실행중입니다.`);
