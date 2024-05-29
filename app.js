@@ -23,10 +23,10 @@ app.use(express.static("public"));
 app.use(express.json());
 app.use(session({
   secret: process.env.SESSION_SECRET, // 세션 암호화에 사용할 비밀 키
-  resave: true,
-  saveUninitialized: true,
+  resave: false,
+  saveUninitialized: false,
   store: MongoStore.create({ mongoUrl: process.env.MONGODB_URI }), // 세션 저장소로 MongoDB 사용
-  cookie: { secure: false } // HTTPS를 사용할 경우 true로 설정
+  cookie: { httpOnly: true, secure: false  } // HTTPS를 사용할 경우 true로 설정
 }));
 
 app.use(checkLoginStatus); // 세션 상태 확인 미들웨어 추가

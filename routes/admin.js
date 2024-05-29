@@ -14,10 +14,15 @@ const checkLogin = (req, res, next) => {
   next();
 };
 //관리자 홈
-router.get("/adminmain", (req, res) => {
-  res.render("./admin/allPosts", { layout: adminLayout });
-});
-
+router.get(
+  "/adminmain",
+  checkLogin,
+  asyncHandler(async (req, res) => {
+    const locals = { title: "allPosts", isLoggedIn: !!req.session.userId, username: req.session.username };
+    const data = await Post.find();
+    res.render("admin/allPosts", { locals, data, layout: adminLayout });
+  })
+);
 
 // 관리자 로그인 처리
 router.post(
@@ -34,14 +39,12 @@ router.post(
         return res.status(401).send('<script>alert("비밀번호가 일치하지 않습니다."); window.location.href="/adminlogin";</script>');
       }
       req.session.userId = admin._id; // 세션에 사용자 ID 저장
-      req.session.username = admin.adminname; // 세션에 사용자 이름 저장
       res.redirect("/allPosts");
     } catch (error) {
       console.error(error);
       const errorMessage = "로그인 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.";
       return res.status(500).send(`<script>alert("${errorMessage}"); window.location.href="/adminlogin";</script>`);
     }
-    checkLogin
   })
 );
 

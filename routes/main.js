@@ -35,10 +35,10 @@ router.get(["/", "/home"], asyncHandler(async (req, res) => {
 }));
 
 // 커뮤니티 페이지
-router.get("/community", asyncHandler(async (req, res) => {
-  const locals = { title: "커뮤니티", isLoggedIn: !!req.cookies.token };
+router.get("/post", asyncHandler(async (req, res) => {
+  const locals = { title: "post", isLoggedIn: !!req.cookies.token };
   const data = await Post.find({});
-  res.render("community", { locals, data, layout: mainLayout });
+  res.render("post", { locals, data, layout: mainLayout });
 }));
 
 // 로그인 페이지
