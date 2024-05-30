@@ -4,6 +4,7 @@ const asyncHandler = require("express-async-handler");
 const bcrypt = require("bcrypt");
 const Admin = require("../models/Admin");
 const Album = require("../models/Album");
+const Cart = require("../models/Cart");
 const multer = require('multer');
 const Post = require("../models/Post");
 const adminLayout = "../views/layouts/admin";
@@ -90,7 +91,7 @@ router.post(
         password: hashedPassword,
         name
       });
-      res.status(400).send('<script>alert("회원가입이 완료되었습니다."); window.location.href="/adminregister";</script>');
+      res.status(400).send('<script>alert("회원가입이 완료되었습니다."); window.location.href="/adminmain";</script>');
     } catch (error) {
       console.error(error);
       res.status(500).send('<script>alert("관리자 등록 중 오류가 발생했습니다."); window.location.href="/adminregister";</script>');
@@ -225,9 +226,9 @@ router.post(
   upload.single('coverImage'),
   asyncHandler(async (req, res) => {
     try {
-      const { title, artist, genre, description } = req.body;
+      const { title, artist, genre, price } = req.body;
       const coverImage = req.file ? req.file.filename : null;
-      const newAlbum = new Album({ title, artist, genre, description, coverImage});
+      const newAlbum = new Album({ title, artist, genre, price, coverImage});
       await Album.create(newAlbum);
       res.redirect("/admin/products");
     } catch (error) {
@@ -280,5 +281,22 @@ router.post(
     }
   })
 );
+
+router.get(
+  "/admin/cart",
+  checkLogin,
+  asyncHandler(async (req, res) => {
+    const locals = { title: "장바구니" };
+    const cart = await Cart.find();
+    const total=0;
+    cart.products.items.forEach(item => {
+      total += item.products.price * item.quantity;
+  });
+    res.render("cart", { locals, cart, layout: adminLayout });
+    
+  })
+);
+
+
 
 module.exports = router;

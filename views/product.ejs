@@ -26,6 +26,9 @@
         장르: <%= album.genre %><br>
         가격: <%= album.price %>원<br>
       </div>
+      <form action="cart/add" method="POST" onsubmit="return confirm('장바구니에 추가하시겠습니까?');">
+        <button type="submit">장바구니에 추가</button>
+      </form>
     </li>
   <% }) %>
 </ul>

@@ -2,7 +2,7 @@
 <a href="/allPosts">&larr; 뒤로</a>
 <div class="admin-title">
 <h2> <%= locals.title %></h2>
-<form action="/delete/<%= post._id %>?_method=DELETE" method="POST"  class="btn-delete btn" onsubmit="return confirm('정말 삭제하시겠습니까?');">
+<form action="/delete/<%= data._id %>?_method=DELETE" method="POST"  class="btn-delete btn" onsubmit="return confirm('정말 삭제하시겠습니까?');">
   <button type="submit">삭제</button>
 </form>
 </div>

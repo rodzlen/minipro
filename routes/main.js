@@ -7,6 +7,7 @@ const User = require("../models/User");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const Album = require("../models/Album");
+const Cart = require("../models/Cart");
 const jwtSecret = process.env.JWT_SECRET;
 
 // 로그인 확인 미들웨어
@@ -35,7 +36,7 @@ router.get(["/", "/home"], asyncHandler(async (req, res) => {
   res.render("home", { locals, data, layout: mainLayout });
 }));
 
-// 커뮤니티 페이지
+// 공지 확인
 router.get(
   "/post",
   asyncHandler(async (req, res) => {
@@ -65,7 +66,7 @@ router.post("/login", asyncHandler(async (req, res) => {
   if (!user) {
     return res.status(401).send('<script>alert("일치하는 사용자가 없습니다."); window.location.href="/login";</script>');
   }
-  const isValidPassword = await bcrypt.compare(password, user.password);
+  const isValidPassword = await bcrypt.compare(password, user.password);//비교
   if (!isValidPassword) {
     return res.status(401).send('<script>alert("비밀번호가 일치하지 않습니다."); window.location.href="/login";</script>');
   }
@@ -139,5 +140,6 @@ router.get("/products", asyncHandler(async (req, res) => {
   const albums = await Album.find(query); // 대소문자 구분 없이 검색
   res.render("product", { locals, albums, layout: mainLayout });
 }));
+
 
 module.exports = router;

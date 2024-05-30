@@ -1,27 +1,21 @@
-<article class="album-edit">
-<h1>음반 수정</h1>
-<form action="/admin/products/edit/<%= album._id %>" method="POST">
-  <div>
-    <label for="title">제목</label>
-    <input type="text" id="title" name="title" value="<%= album.title %>" required>
-  </div>
-  <div>
-    <label for="artist">아티스트</label>
-    <input type="text" id="artist" name="artist" value="<%= album.artist %>" required>
-  </div>
-  
-  <div>
+<article class="album-add">
+<h1 class="album-title">음반 수정</h1>
+<form action="/admin/products/edit/<%= album._id %>" method="POST" class="album-form">
+    <input type="text" name="title" placeholder="제목" required class="album-input">
+    <input type="text" name="artist" placeholder="아티스트" required class="album-input">
+    <input type="number" name="price" placeholder="가격" required class="album-input">
     <label for="genre">장르</label>
-    <input type="text" id="genre" name="genre" value="<%= album.genre %>" required>
-  </div>
-  <div>
-    <label for="description">설명</label>
-    <textarea id="description" name="description" required><%= album.description %></textarea>
-  </div>
-  <div>
-    <label for="coverImage">이미지</label>
-    <input type="file" name="coverImage">
-  </div>
-  <button type="submit">수정</button><a href="/admin/products">뒤로가기</a>
+    <select name="genre">
+      <option value="피아노">피아노</option>
+      <option  value="성악">성악</option>
+      <option  value="관현악">관현악</option>
+      <option  value="기타">기타</option>
+    </select>
+    <input type="file" name="coverImage" required class="album-file">
+    <button type="submit" class="album-button">수정</button>
+  <a href="/admin/products">뒤로가기</a>
 </form>
 </article>
+
+    
+    
