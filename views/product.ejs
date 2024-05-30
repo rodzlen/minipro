@@ -1,5 +1,6 @@
-<h1>음반 목록</h1>
+
 <article class="user-product">
+  <h1>음반 목록</h1>
 <form action="/products" method="GET" class="search-form">
   <input type="text" name="search" placeholder="검색">
   <select name="genre">
@@ -11,20 +12,20 @@
   </select>
   <button type="submit">검색</button>
 </form>
-<ul class="album-list">
+<ul class="album1-list">
   <% albums.forEach(album => { %>
-    <li class="album-item">
-      <div class="album-details">
+    <li class="album1-item">
+
+      <% if (album.coverImage) { %>
+        <div class="album1-image">
+          <img src="/img/<%=album.coverImage %>" alt="<%= album.title %>" width="200" height="200">
+        </div>
+      <% } %> <div class="album1-details">
         <strong>제목: <%= album.title %></strong><br>
         아티스트: <%= album.artist %><br>
         장르: <%= album.genre %><br>
         가격: <%= album.price %>원<br>
       </div>
-      <% if (album.coverImage) { %>
-        <div class="album-image">
-          <img src="/img/<%=album.coverImage %>" alt="<%= album.title %>" width="200" height="200">
-        </div>
-      <% } %>
     </li>
   <% }) %>
 </ul>

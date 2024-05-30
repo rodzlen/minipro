@@ -101,55 +101,14 @@ footer div {
   margin-bottom: 10px;
 }
 
-/* Article 스타일 */
-.home {
+/* Article Styles */
+.article {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
 }
 
-/* 추천음반 섹션 스타일 */
-.home .recommendations {
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-.home .recommendations h2 {
-  margin-bottom: 10px;
-}
-
-/* 추천음반 이미지 스타일 */
-.home .recommendations img {
-  display: inline-block;
-  margin-right: 20px;
-}
-
-/* 최근 게시물 섹션 스타일 */
-.home .recent-posts {
-  margin-top: 40px;
-}
-
-.home .recent-posts h2 {
-  margin-bottom: 20px;
-}
-
-.home .recent-posts ul {
-  list-style: none;
-}
-
-.home .recent-posts ul li {
-  margin-bottom: 10px;
-}
-
-.home .recent-posts ul li a {
-  text-decoration: none;
-  color: #333;
-}
-
-.home .recent-posts ul li a:hover {
-  color: #007bff;
-}
-/* 로그인 폼 스타일 */
+/* Login Form Styles */
 .login-form {
   max-width: 400px;
   margin: 0 auto;
@@ -197,7 +156,8 @@ footer div {
 .login-form input[type="submit"]:hover {
   background-color: #0056b3;
 }
-/* 회원가입 폼 스타일 */
+
+/* Join Form Styles */
 .join-form {
   max-width: 400px;
   margin: 0 auto;
@@ -230,7 +190,8 @@ footer div {
 .join-container input[type="date"] {
   width: 100%;
   padding: 8px;
-  margin-bottom: 12px;
+  margin-bottom:
+  12px;
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
@@ -266,5 +227,610 @@ footer div {
 
 .radio-label {
   margin-right: 16px;
+}
+
+/* 모든 게시물 스타일 */
+.all-post {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.all-post h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+.all-post ul {
+  list-style: none;
+  padding: 0;
+}
+
+.all-post li {
+  margin-bottom: 10px;
+}
+
+.all-post li a {
+  text-decoration: none;
+  color: #333;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.all-post li a:hover {
+  background-color: #f0f0f0;
+}
+
+.all-post li a span {
+  flex: 1;
+}
+
+.all-post li a span:last-child {
+  font-size: 14px;
+  color: #777;
+}
+
+/* Admin Title Styles */
+.admin-title {
+  margin-bottom: 20px;
+}
+
+.admin-title h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.admin-title .button {
+  text-decoration: none;
+  background-color: #007bff;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 4px;
+}
+
+/* Admin Posts Styles */
+.admin-posts {
+  list-style: none;
+  padding: 0;
+}
+
+.admin-posts li {
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+}
+
+.admin-posts li a {
+  text-decoration: none;
+  color: #333;
+}
+
+/* Admin Post Controls Styles */
+.admin-post-controls {
+  margin-top: 10px;
+}
+
+.admin-post-controls .btn {
+  text-decoration: none;
+  background-color: #28a745;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+.admin-post-controls .btn-delete {
+  background-color: #dc3545;
+}
+
+.admin-post-controls .btn:hover,
+.admin-post-controls .btn-delete:hover {
+  opacity: 0.8;
+}
+
+/* User Product Styles */
+.user-product {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Album Add Styles */
+.album-add {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f2f2f2;
+  border-radius: 5px;
+}
+
+.album-title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.album-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.album-input {
+  padding: 8px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.album-file {
+  margin-bottom: 12px;
+}
+
+.album-button {
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+}
+
+.album-button:hover {
+  background-color: #0056b3;
+}
+
+/* Album List Styles */
+.album-list {
+  list-style: none;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.album-list h1 {
+  margin-bottom: 20px;
+}
+
+.input-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.input-btn:hover {
+  background-color: #0056b3;
+}
+
+.album-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.album-table th,
+.album-table td {
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+.album-table th {
+  background-color: #f2f2f2;
+  text-align: left;
+  font-weight: bold;
+}
+
+.album-table td img {
+  max-width: 100px;
+  height: auto;
+  border-radius: 4px;
+}
+
+/* Add Article Styles */
+.add {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.add a {
+  text-decoration: none;
+  color: #007bff;
+  margin-bottom: 10px;
+}
+
+.add form {
+  margin-top: 20px;
+}
+
+.add label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.add input[type="text"],
+.add textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.add input[type="submit"] {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.add input[type="submit"],
+.add a[href="/adminmain"] {
+  display: inline-block;
+  background-color: #007bff;
+  color: #fff;
+  padding:
+  10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.add input[type="submit"]:hover,
+.add a[href="/adminmain"]:hover {
+  background-color: #0056b3;
+}
+
+/* 음반 목록 스타일 */
+.user-product {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* 검색 폼 스타일 */
+.search-form {
+  margin-bottom: 20px;
+}
+
+.search-form input[type="text"],
+.search-form select {
+  margin-right: 10px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.search-form button {
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.search-form button:hover {
+  background-color: #0056b3;
+}
+
+/* 음반 목록 스타일 */
+/* Album List Styles */
+.user-product {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.search-form {
+  margin-bottom: 20px;
+}
+
+.search-form input[type="text"],
+.search-form select {
+  padding: 8px;
+  margin-right: 10px;
+}
+
+.search-form button {
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.search-form button:hover {
+  opacity: 0.8;
+}
+
+.album1-list {
+  list-style: none;
+  padding: 0;
+}
+
+.album1-item {
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  transition: transform 0.3s ease;
+}
+
+.album1-item:hover {
+  transform: translateY(-5px);
+}
+
+.album1-item .album1-image {
+  margin-right: 20px;
+}
+
+.album1-item .album1-image img {
+  max-width: 200px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.album1-item .album1-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.album1-details strong {
+  font-weight: bold;
+  
+}
+
+
+
+/* Post 스타일 */
+.post {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.post h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.show {
+  line-height: 1.6;
+}
+
+.show p {
+  margin-bottom: 10px;
+}
+
+.post a {
+  display: inline-block;
+  margin-top: 20px;
+  text-decoration: none;
+  color: #007bff;
+  border-bottom: 1px solid #007bff;
+  transition: border-color 0.3s ease;
+}
+
+.post a:hover {
+  border-color: #0056b3;
+}
+/* Home 스타일 */
+.home {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* 추천 섹션 스타일 */
+.recommendation {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.recommendation h2 {
+  margin-bottom: 10px;
+}
+
+.recommendation p {
+  margin-bottom: 20px;
+}
+
+.recommendation img {
+  margin-right: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.recommendation img:hover {
+  transform: scale(1.05);
+}
+/* CRUD Post Styles */
+.crud-post {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.hwi {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.hwi h2 {
+  font-size: 24px;
+  margin: 0;
+}
+
+.hwi .button {
+  text-decoration: none;
+  background-color: #4CAF50; /* 민트 그린 */
+  color: white;
+  padding: 8px 16px;
+  border-radius: 4px;
+}
+
+.hwi .button:hover {
+  background-color: #45a049; /* 더 진한 민트 그린 */
+}
+
+.hwi1 {
+  list-style: none;
+  padding: 0;
+}
+
+.hwi1 li {
+  margin-bottom: 10px;
+}
+
+.hwi1 li a {
+  text-decoration: none;
+  color: #333;
+}
+
+.hwi2 {
+  display: flex;
+  align-items: center;
+}
+
+.hwi2 .btn {
+  text-decoration: none;
+  background-color: #007bff; /* 블루 */
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+.hwi2 .btn-delete {
+  background-color: #485979;
+}
+
+.hwi2 .btn:hover,
+.hwi2 .btn-delete:hover {
+  opacity: 0.8;
+}
+.edit {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.edit a {
+  text-decoration: none;
+  color: #007bff;
+  margin-bottom: 10px;
+  display: inline-block;
+}
+
+.edit .admin-title {
+  margin-bottom: 20px;
+}
+
+.edit .admin-title h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.edit form {
+  margin-top: 20px;
+}
+
+.edit label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.edit input[type="text"],
+.edit textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.edit input[type="submit"] {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.edit input[type="submit"]:hover,
+.edit a[href="/allPosts"]:hover {
+  background-color: #0056b3;
+}
+/* Register Form Styles */
+.register {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.register h3 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.register form {
+  display: flex;
+  flex-direction: column;
+}
+
+.register label {
+  margin-bottom: 6px;
+  font-weight: bold;
+}
+
+.register input[type="text"],
+.register input[type="password"] {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.register input[type="submit"] {
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.register input[type="submit"]:hover {
+  background-color: #0056b3;
 }
 

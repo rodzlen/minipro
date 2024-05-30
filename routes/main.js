@@ -36,11 +36,15 @@ router.get(["/", "/home"], asyncHandler(async (req, res) => {
 }));
 
 // 커뮤니티 페이지
-router.get("/post", asyncHandler(async (req, res) => {
-  const locals = { title: "post", isLoggedIn: !!req.cookies.token };
-  const data = await Post.find({});
-  res.render("post", { locals, data, layout: mainLayout });
-}));
+router.get(
+  "/post",
+  asyncHandler(async (req, res) => {
+    const locals = { title: "공지", isLoggedIn: !!req.cookies.token };
+    const data = await Post.find();
+    res.render("allPosts", { locals, data, layout: mainLayout });
+  })
+);
+
 
 // 로그인 페이지
 router.get("/login", asyncHandler(async (req, res) => {

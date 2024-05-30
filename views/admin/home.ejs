@@ -1,22 +1,21 @@
 <article class="home">
       
   <!-- 추천 음반 섹션 -->
-  <div class="recommendations">
+  <div class="recommendation">
     <h2>추천음반</h2>
     <p>추천하는 음반</p>
-    <img src="#" alt="추천음반1 사진" width="400" height="400">
-    <img src="#" alt="추천음반2 사진" width="400" height="400">
-    <img src="#" alt="추천음반3 사진" width="400" height="400">
-    <img src="#" alt="추천음반4 사진" width="400" height="400">
+    <img src="#" alt="추천음반1 사진" width="200" height="200">
+    <img src="#" alt="추천음반2 사진" width="200" height="200">
+    <img src="#" alt="추천음반3 사진" width="200" height="200">
+    <img src="#" alt="추천음반4 사진" width="200" height="200">
   </div>
 
-  <!-- 최근 게시물 섹션 -->
-  <section class="recent-posts">
-    <h2>최근 게시물</h2>
+  <section class="all-post">
+    <h2>공지사항</h2>
     <ul>
       <% data.forEach(post => { %>
         <li>
-          <a href="/post/<%= post._id %>">
+          <a href="admin/post/<%= post._id %>">
             <span><%= post.title %></span>
             <span><%= post.createdAt.toDateString() %></span>
           </a>

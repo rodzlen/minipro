@@ -1,23 +1,21 @@
-<article class="allPost">
-<div class="admin-title">
-  <h2><%=locals.title %></h2>
-  <a href="/add" class="button">+ 새 게시물</a>
+<article class="crud-post">
+  <div class="hwi">
+    <h2><%= locals.title %></h2>
+    <a href="/add" class="button">+ 새 게시물</a>
   </div>
-  <ul class="admin-posts">
-  <% data.forEach(post => { %>
-  <li>
-  <a href="/admin/post/<%= post._id %>">
-  <%= post.title %>
-  </a>
-  <div class="admin-post-controls">
-  <a href="/edit/<%= post._id %>" class="btn">편집</a>
-  <form action="/delete/<%= post._id %>?_method=DELETE"
-    method="POST">
-  <input type="submit" value="삭제"
-  class="btn-delete btn">
-  </form>
-  </div>
-  </li>
-  <% }) %>
+  <ul class="hwi1">
+    <% data.forEach(post => { %>
+    <li>
+      <a href="/admin/post/<%= post._id %>">
+        <%= post.title %>
+      </a>
+      <div class="hwi2">
+        <a href="/edit/<%= post._id %>" class="btn">편집</a>
+          <form action="/delete/<%= post._id %>?_method=DELETE" method="POST"  class="btn-delete btn" onsubmit="return confirm('정말 삭제하시겠습니까?');">
+            <button type="submit">삭제</button>
+          </form>
+      </div>
+    </li>
+    <% }) %>
   </ul>
 </article>

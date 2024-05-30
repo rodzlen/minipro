@@ -51,7 +51,7 @@ router.post(
         return res.status(401).send('<script>alert("비밀번호가 일치하지 않습니다."); window.location.href="/adminlogin";</script>');
       }
       req.session.userId = admin._id; // 세션에 사용자 ID 저장
-      res.redirect("/allPosts");
+      res.redirect("/adminmain");
     } catch (error) {
       console.error(error);
       const errorMessage = "로그인 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.";

@@ -21,8 +21,8 @@
       <nav class="header-nav">
         <ul>
         <li><a href="/adminmain">Home</a></li>
-        <li><a href="/admin/products">음반 검색</a></li>
-        <li><a href="/allposts">공지사항</a></li>
+        <li><a href="/admin/products">제품 관리</a></li>
+        <li><a href="/allposts">공지 관리</a></li>
         <li><a href="/cart">장바구니</a></li>
         </ul>
         </nav>
@@ -45,7 +45,22 @@
     <div>
     <p> Copyright © kim. All rights reserved.</p>
     </div>
-    <div>니얼굴 사이트</div>
+    <div>H.P 010-1234-56789</div>
 
 </body>
+<script>
+  window.addEventListener('scroll', function() {
+  var footer = document.querySelector('footer');
+  var scrollHeight = document.documentElement.scrollHeight;
+  var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+  var clientHeight = document.documentElement.clientHeight;
+  
+  // 스크롤이 맨 아래에 도달했을 때 footer를 보이도록 함
+  if (scrollHeight - scrollTop - clientHeight < 1 || !scrollHeight) {
+    footer.style.display = 'block';
+  } else {
+    footer.style.display = 'none';
+  }
+});
+</script>
 </html>
