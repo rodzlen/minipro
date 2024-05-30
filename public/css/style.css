@@ -238,3 +238,47 @@ footer div {
   opacity: 0.8;
 }
 
+/* Form Styles */
+label {
+  display: block;
+  margin-bottom: 6px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="date"] {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+}
+
+.radio-group {
+  margin-bottom: 12px;
+}
+
+.radio-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.radio-input {
+  margin-right: 8px;
+}
+
+.radio-label {
+  margin-right: 16px;
+}

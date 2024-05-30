@@ -1,7 +1,8 @@
+<article class="post">
 <h1><%= data.title %></h1>
-<article class="article">
+<section class="article">
 <%= data.body %>
-</article>
+</section>
 <a href="/adminmain">뒤로가기</a>
 <div class="admin-post-controls">
   <a href="/edit/<%= data._id %>" class="btn">편집</a>
@@ -9,3 +10,4 @@
   <input type="submit" value="삭제"
   class="btn-delete btn">
   </form>
+</article>

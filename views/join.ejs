@@ -1,10 +1,49 @@
-<h3>회원가입</h3>
-<form action="/join" method="POST">
-<label for="username"><b>사용자 이름</b></label>
-<input type="text" placeholder="Enter Username"
-name="username">
-<label for="password"><b>비밀번호</b></label>
-<input type="password" placeholder="Enter Password"
-name="password">
-<input type="submit" value="등록" class="btn">
-</form>
+<article class="joinForm">
+  <div class="join-container">
+    <h3>회원가입</h3>
+    <form action="/join" method="POST">
+      <label for="username"><b>사용자 이름</b></label>
+      <input type="text" placeholder="Enter Username" name="username">
+      <label for="password"><b>비밀번호</b></label>
+      <input type="password" placeholder="Enter Password" name="password">
+      <label for="password2"><b>비밀번호 확인</b></label>
+      <input type="password" placeholder="비밀번호 확인" name="password2">
+      <label for="birth"><b>생년월일</b></label>
+      <input type="date" name="birth">
+
+      <label for="gender"><b>성별</b></label>
+      <div class="radio-group">
+        <div class="radio-container">
+          <input type="radio" id="gender1" name="gender" value="남성" class="radio-input">
+          <label for="gender1" class="radio-label">남성</label>
+        </div>
+        <div class="radio-container">
+          <input type="radio" id="gender2" name="gender" value="여성" class="radio-input">
+          <label for="gender2" class="radio-label">여성</label>
+        </div>
+      </div>
+
+      <label for="job"><b>직업</b></label>
+      <div class="radio-group">
+        <div class="radio-container">
+          <input type="radio" id="radio1" name="job" value="회사원" class="radio-input" required>
+          <label for="radio1" class="radio-label">회사원</label>
+        </div>
+        <div class="radio-container">
+          <input type="radio" id="radio2" name="job" value="교수" class="radio-input" required>
+          <label for="radio2" class="radio-label">교수</label>
+        </div>
+        <div class="radio-container">
+          <input type="radio" id="radio3" name="job" value="학생" class="radio-input" required>
+          <label for="radio3" class="radio-label">학생</label>
+        </div>
+        <div class="radio-container">
+          <input type="radio" id="radio4" name="job" value="무직" class="radio-input" required>
+          <label for="radio4" class="radio-label">무직</label>
+        </div>
+      </div>
+
+      <input type="submit" value="등록" class="btn">
+    </form>
+  </div>
+</article>

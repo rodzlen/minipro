@@ -2,7 +2,14 @@
 <form action="/admin/products/add" method="POST" enctype="multipart/form-data" class="album-form">
   <input type="text" name="title" placeholder="제목" required class="album-input">
   <input type="text" name="artist" placeholder="아티스트" required class="album-input">
-  <input type="text" name="genre" placeholder="장르" required class="album-input">
+  <label for="genre">장르</label>
+  <select name="genre">
+    <option value="피아노">피아노</option>
+    <option  value="성악">성악</option>
+    <option  value="관현악">관현악</option>
+    <option  value="기타">기타</option>
+  </select>
   <input type="file" name="coverImage" required class="album-file">
   <button type="submit" class="album-button">추가</button>
+  
 </form>

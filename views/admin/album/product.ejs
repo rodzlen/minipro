@@ -1,5 +1,5 @@
 <h1>음반 목록</h1>
-<a href="/admin/products/add">음반 추가</a>
+<a href="/admin/products/add" class="input-btn">음반 추가</a>
 <table class="album-table">
   <thead>
     <tr>
@@ -21,7 +21,7 @@
       <td><%= album.description %></td>
       <td>
         <% if (album.coverImage) { %>
-          <img src="/uploads/<%= album.coverImage %>" alt="<%= album.title %>" class="album-image">
+          <img src="/img/<%=album.coverImage %>" alt="<%= album.title %>" width="100" height="100">
         <% } %>
       </td>
       <td><a href="/admin/products/edit/<%= album._id %>">수정</a></td>

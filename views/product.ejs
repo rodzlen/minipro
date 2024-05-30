@@ -1,6 +1,14 @@
 <h1>음반 목록</h1>
+<article class="user-product">
 <form action="/products" method="GET" class="search-form">
   <input type="text" name="search" placeholder="검색">
+  <select name="genre">
+    <option value="">전체</option>
+    <option value="피아노">피아노</option>
+    <option value="성악">성악</option>
+    <option value="관현악">관현악</option>
+    <option value="기타">기타</option>
+  </select>
   <button type="submit">검색</button>
 </form>
 <ul class="album-list">
@@ -10,13 +18,14 @@
         <strong>제목: <%= album.title %></strong><br>
         아티스트: <%= album.artist %><br>
         장르: <%= album.genre %><br>
-        설명: <%= album.description %><br>
+        가격: <%= album.price %>원<br>
       </div>
       <% if (album.coverImage) { %>
         <div class="album-image">
-          <img src="/uploads/<%= album.coverImage %>" alt="<%= album.title %>">
+          <img src="/img/<%=album.coverImage %>" alt="<%= album.title %>" width="200" height="200">
         </div>
       <% } %>
     </li>
   <% }) %>
 </ul>
+</article>

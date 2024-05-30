@@ -9,6 +9,10 @@ password: {
 type: String,
 required: true,
 },
+name : {
+type: String ,
+required : true
+}
 });
 const Admin = mongoose.model("Admin", AdminSchema);
 

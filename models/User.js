@@ -9,5 +9,17 @@ password: {
 type: String,
 required: true,
 },
+birth:{
+  required : true,
+  type : Date
+},
+gender : {
+  type : String,
+  required:true
+},
+job:{
+type : String,
+required : true
+}
 });
 module.exports = mongoose.model("User", userSchema);

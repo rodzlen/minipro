@@ -1,13 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>관리자 등록</title>
+</head>
+<body>
+  
 <!-- 관리자 등록 -->
 <h3>관리자 등록</h3>
 <form action="/adminregister" method="POST">
-<label for="adminname"><b>사용자 이름</b></label>
-<input type="text" placeholder="Enter Username"
-name="adminname">
+<label for="adminname"><b>아이디</b></label>
+<input type="text" placeholder="아이디 입력"
+name="adminname" required>
 <label for="password"><b>비밀번호</b></label>
-<input type="password" placeholder="Enter Password"
-name="password">
+<input type="password" placeholder="비밀번호 입력"
+name="password"required>
+<label for="password2"><b>비밀번호확인</b></label>
+<input type="password" placeholder="비밀번호 확인"
+name="password2"required>
+<label for="name"><b>이름</b></label>
+<input type="text" placeholder="이름"name="name"required>
 <input type="submit" value="등록" class="btn">
 </form>
-
-  
+</body>
+</html>

@@ -11,11 +11,11 @@
 
       <!-- 최근 게시물 -->
       <section>
-        <h2 >최근 커뮤니티 글</h2>
+        <h2 >공지사항</h2>
         <ul >
           <% data.forEach(post => { %>
             <li>
-              <a href="/admin/post/<%= post._id %>">
+              <a href="/post/<%= post._id %>">
                 <span><%= post.title %></span>
                 <span><%= post.createdAt.toDateString() %></span>
               </a>

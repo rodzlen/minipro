@@ -22,7 +22,7 @@ const upload = multer({ storage: storage });
 const checkLogin = (req, res, next) => {
   if (!req.session.userId) {
     return res.status(401).send('<script>alert("잘못된 접근입니다"); window.location.href="/adminlogin";</script>');
-  }
+  } 
   next();
 };
 //관리자 홈
@@ -32,7 +32,7 @@ router.get(
   asyncHandler(async (req, res) => {
     const locals = { title: "allPosts", isLoggedIn: !!req.session.userId, username: req.session.username };
     const data = await Post.find();
-    res.render("admin/allPosts", { locals, data, layout: adminLayout });
+    res.render("admin/home", { locals, data, layout: adminLayout });
   })
 );
 
@@ -75,16 +75,22 @@ router.post(
   checkLogin,
   asyncHandler(async (req, res) => {
     try {
-      const { adminname, password } = req.body;
-      if (!adminname || !password) {
-        return res.status(400).send('<script>alert("관리자 이름과 비밀번호를 입력해주세요."); window.location.href="/adminregister";</script>');
+      const { adminname, password, password2, name } = req.body;
+      if (!adminname || !password|| !name) {
+        return res.status(400).send('<script>alert("빈칸없이 작성하세요"); window.location.href="/adminregister";</script>');
+      }else if (password!==password2){
+        return res.status(400).send('<script>alert("비밀번호가 다릅니다."); window.location.href="/adminregister";</script>');
+      }  const existingUser = await Admin.findOne({ adminname });
+      if (existingUser) {
+        return res.status(400).send('<script>alert("아이디가 존재합니다."); window.location.href="/adminregister";</script>');
       }
       const hashedPassword = await bcrypt.hash(password, 10);
       const admin = await Admin.create({
         adminname,
         password: hashedPassword,
+        name
       });
-      res.json(`user created : ${admin}`);
+      res.status(400).send('<script>alert("회원가입이 완료되었습니다."); window.location.href="/adminregister";</script>');
     } catch (error) {
       console.error(error);
       res.status(500).send('<script>alert("관리자 등록 중 오류가 발생했습니다."); window.location.href="/adminregister";</script>');
@@ -167,7 +173,7 @@ router.delete(
   })
 );
 
-// 게시물 조회
+// 상세 게시물 조회
 router.get(
   "/admin/post/:id",
   checkLogin,
@@ -221,8 +227,8 @@ router.post(
     try {
       const { title, artist, genre, description } = req.body;
       const coverImage = req.file ? req.file.filename : null;
-      const newAlbum = new Album({ title, artist, genre, description ,coverImage});
-      await newAlbum.save();
+      const newAlbum = new Album({ title, artist, genre, description, coverImage});
+      await Album.create(newAlbum);
       res.redirect("/admin/products");
     } catch (error) {
       console.error(error);

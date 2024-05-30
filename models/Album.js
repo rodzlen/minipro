@@ -19,6 +19,10 @@ const albumSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  price:{
+    type:Number,
+    required:true
+  }
 });
 
 const Album = mongoose.model("Album", albumSchema);
