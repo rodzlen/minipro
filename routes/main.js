@@ -81,6 +81,7 @@ router.get("/join", asyncHandler(async (req, res) => {
   const locals = { title: "회원가입", isLoggedIn: !!req.cookies.token };
   res.render("join", { locals, layout: mainLayout });
 }));
+
 router.post(
   "/join",
   asyncHandler(async (req, res) => {
