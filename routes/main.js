@@ -10,6 +10,7 @@ const Album = require("../models/Album");
 const Cart = require("../models/Cart");
 const jwtSecret = process.env.JWT_SECRET;
 
+
 // 로그인 확인 미들웨어
 const checkLogin = (req, res, next) => {
   const token = req.cookies.token;

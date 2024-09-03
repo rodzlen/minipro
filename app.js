@@ -19,6 +19,7 @@ const checkLoginStatus = (req, res, next) => {
   next();
 };
 
+
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(methodOverride("_method"));

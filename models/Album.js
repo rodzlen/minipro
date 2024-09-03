@@ -5,6 +5,7 @@ const albumSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  
   artist: {
     type: String,
     required: true,

@@ -9,6 +9,7 @@ const multer = require('multer');
 const Post = require("../models/Post");
 const adminLayout = "../views/layouts/admin";
 const path = require('path');
+
 // Multer 설정
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
